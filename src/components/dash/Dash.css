@@ -1,0 +1,8 @@
+.Dash {
+  width: 50vw;
+  min-height: 100vh;
+  background-color: #E5F4EC;
+}
+.Dash > h2 {
+  font-size: 30px;
+}
