@@ -4,7 +4,7 @@
 
 This project is designed to give you an opportunity to build something from scratch and to teach you how to connect all the pieces of an application together. All of the instructions give you an idea of what order to do things in, but there won't be any guidance or solutions on how to write the code itself. The styling of the project is not included in the instructions at all and should be completed at your discretion. 
 
-This project is broken into three parts. The setup instructions are more detailed and are designed to get you started. Parts 1-3 get progressively less detailed to give you a chance to practice your skills on your own. Your mentors have also been asked to provide only minimal guidance. They can point you in the right direction, but cannot help you code. This project is a chance for you to combine and showcase the skills you've learned so far.
+This project is broken into three parts. The setup instructions are more detailed and are designed to get you started. The parts have varying levels of detail, with the newer concepts explained more. This gives you a chance to practice your skills on your own. Your mentors have also been asked to provide only minimal guidance. They can point you in the right direction, but cannot help you code. This project is a chance for you to combine and showcase the skills you've learned so far.
 
 Good luck and work hard!
 
@@ -21,14 +21,14 @@ This section will help you create the files you need and install the packages yo
 
 ## React
 1) Run `create-react-app houser` and cd into the folder to get started.
-2) Run `npm i axios --save`. This is the only package you need to add for our front end.
+2) Run `npm i axios react-router-dom --save`.
 3) Create a component folder inside of src
-4) Inside your component folder create a folder for each component you will be using (Dashboard, Product, Form, and Header)
+4) Inside your component folder create a folder for each component you will be using (Dashboard, House, Wizard, and Header)
 5) Inside each of these folders create a Javascript file named the same thing. Make sure to capitalize the first letter!
-6) Create a simple class component in the Dashboard and Form files. For now just return a div containing the component's name from the render method.
+6) Create a simple class component in the Dashboard and Wizard files. For now just return a div containing the component's name from the render method.
 7) Create a functional component (created with the function keyword) in the Header and Product files. For now just return a div containing the component's name.
-8) Now render the Dashboard, Form, and Header components in App.
-9) Render the Product component inside Dashboard.
+8) Now render the Dashboard, Wizard, and Header components in App.
+9) Render the House component inside Dashboard.
 10) Run `npm start` to make sure everything is working. You should see the names of all the components displayed.
 
 ## Server
@@ -39,7 +39,7 @@ This section will help you create the files you need and install the packages yo
 5) Setup a basic Express server (you will add endpoints later, just get the server ready to run).
 6) Open your package.json. Add your main property (so nodemon will work) and your proxy (so our axios requests will work).
     * Your main should look like `"main": "server/index.js"`
-    * Your proxy should look like `"proxy": "http://localhost:4000"` using whatever port your server is setup to run on (the port should not .
+    * Your proxy should look like `"proxy": "http://localhost:4000"` using whatever port your server is setup to run on (the port should not be 3000 because that is what React will be running on).
 7) Run `nodemon` and make sure your server runs.
 
 ## Database
@@ -64,3 +64,32 @@ Congratulations! If you finished all the setup, you've already completed some de
 "Student can create Node servers using the Express package (Server running)" </br>
 "Student can create tables in a database" </br>
 "Student can connect to their database in their NodeJS servers using Massive" </br>
+
+# Part 1
+
+<b>Live example [here](#). Filled out planning sheet [here](https://github.com/bethtelford/houser-redo/blob/master/PLANNING_SHEET.md)</b>
+
+In the first part you will set up routing, the abiltiy to view the houses, add a new house, and delete a house from the list. 
+
+Functionality of the Wizard View:
+* A user should be able to add a name, address, city, state, and zipcode for a house.
+* A user should be able to click the 'Cancel' button.
+    * This should NOT add a house to the database.
+    * This should redirect the user to the Dashboard.
+* A user should be able to click the 'Complete' button.
+    * This should add a new house to the database.
+    * This should redirect the user to the Dashboard
+
+Funcitonality of the Dashboard View:
+* A user should be able to see all the houses that have been added to the database.
+* Each house should display its name, address, city, state, and zipcode information.
+* A user should be able to click the 'Add New Property' button to be taken to the Wizard view.
+
+## Design
+PICTURE HERE
+
+## Step 1
+You are going to begin by setting up the routing.
+
+* Open src/index.js and import HashRouter from `react-router-dom`. Wrap App with HashRouter.
+* 
