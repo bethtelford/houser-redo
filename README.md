@@ -29,7 +29,8 @@ This section will help you create the files you need and install the packages yo
 7) Create a functional component (created with the function keyword) in the Header and Product files. For now just return a div containing the component's name.
 8) Now render the Dashboard, Wizard, and Header components in App.
 9) Render the House component inside Dashboard.
-10) Run `npm start` to make sure everything is working. You should see the names of all the components displayed.
+10) Create a route.js file inside the src folder. We will use this for our routing later.
+11) Run `npm start` to make sure everything is working. You should see the names of all the components displayed.
 
 ## Server
 1) Run `npm i express body-parser --save`
@@ -91,5 +92,96 @@ PICTURE HERE
 ## Step 1
 You are going to begin by setting up the routing.
 
-* Open src/index.js and import HashRouter from `react-router-dom`. Wrap App with HashRouter.
-* 
+* Open src/index.js and bring in HashRouter from `react-router-dom`. Wrap App with HashRouter.
+* Now open routes.js. Bring in Switch and Route from `react-router-dom`. Also bring in the Dashboard component and the Wizard component.
+* Set up the Switch element as the default export of the file.
+* Inside the Switch, setup a Route for both of the components you brought in.
+   * Dashboard should have '/' for its path.
+   * Wizard should have '/wizard' for its path.
+* Open App.js and change what you're bringing into the component.
+   * Remove Dashboard and Wizard from the component.
+   * Instead bring in routes from routes.js and render them instead of the other two components.
+   * The Header component should remain, as this will show on every view. 
+   * If you open your application in the browser you should see the header at all times, but the two views should display only when you visit the corresponding path in the URL.
+* Create the 'Add New Property' button in the Dashboard view. Set it up to navigate to the Wizard view when clicked.
+* Create the 'Cancel' button in the Wizard view. Set it up to navigate to the Dashboard when clicked. 
+
+## Step 2
+Now that routing is setup, the first thing you will do is setup the form in the Wizard View.
+
+* Set up initial state in Wizard for name, address, city, state, and zipcode.
+* Create a corresponding input box in the JSX for each property in state.
+* Set up the input boxes to update the correct piece of state on change. 
+
+## Step 3
+Now you can add the ability to see all the houses.
+
+* Setup initial state in Dashboard. You will need to store the list of houses that the server returns. 
+* Map over the list in your render method, returning the House component for each house (this won't display anything until we get the list from the backend).
+* Write a GET endpoint in your server.
+   * The endpoint should respond with a list of all the houses in the database.
+* Write a method in Dashboard that sends an axios request to the endpoint you just wrote. 
+   * Once the response comes back, update state with the list of houses.
+* Invoke this method as soon as the Dashboard view loads.
+* You should see the word "House" repeated as many times as you have houses in your database.
+* Update your House component to display the details of each house.
+   * Change where you're mapping over the list in Dashboard to pass the house information down to the House component.
+   * In the House component write JSX to display the house information that was passed down. 
+   * Add a 'Delete' button in the House componenet. You will make it functional later. 
+
+## Step 4
+Next you will add the ability to add a new house.
+
+* Write a POST endpoint in your server.
+   * The endpoint should pull the name, address, city, state, and zipcode off of the body.
+   * The endpoint should respond with the 'all good' status code once it has added the house to the database.
+* Write a method in Wizard that sends an axios request to the endpoint you just wrote.
+   * The axios request should take all the values from state and put them in the body of the request.
+   * Once the request comes back, navigate the user to the Dashboard View.
+   
+## Step 5
+Then you will add the ability to delete a house.
+
+* Write DELETE endpoint in your server.
+   * The endpoint should should use a parameter to determine which product to remove from the database. 
+   * The endpoint should respond with the 'all good' status code once it has removed the house to the database.
+* Write a method in Dashboard that sends an axios request to the endpoint you just wrote.
+    * The method should accept a parameter to determine which product to remove from the database.
+    * Once the response comes back from the server, invoke the method you wrote to get all the houses from the database.
+* Pass the method from Dashboard to each House component through props. 
+    * The method should fire when a user clicks any of the 'Delete' buttons.
+    * Remember to pass an argument into the method to identify which product should be deleted.
+   
+## Competencies
+You just covered a lot of competencies! Here is the breakdown:
+
+<strong>Step 1</strong> </br>
+"Student can add ReactRouter to their code base (HashRouter)" </br>
+"Student can add ReactRouter to their code base (Switch, Route, component)" </br>
+"Student can add ReactRouter to their code base (Link)" </br>
+
+<strong>Step 2</strong> </br>
+"Student can use class based components in react and it's features (state, setState, constructors)" </br>
+"Student can use class based components in react and it's features (events)" </br>
+"Student can apply ES6 constructs in React for better code (arrow functions)" </br>
+
+<strong>Step 3</strong> </br>
+"Student can use class based components in react and it's features (props)" </br>
+"Student can create functional components that receive and render props" </br>
+"Student can interact with the web via axios and REST" </br>
+"Student can use componentDidMount in their code" </br>
+"Student can create a RESTful API (Status codes)" </br>
+"Student can create a RESTful API (GET endpoint)" </br>
+"Student can create SQL statements to manipulate data in their databases (Select)" </br>
+"Student can run SQL commands in their NodeJS servers using Massive" </br>
+
+<strong>Step 4</strong> </br>
+"Student can create a RESTful API (body parser)" </br>
+"Student can create a RESTful API (POST endpoint)" </br>
+"Student can create SQL statements to manipulate data in their databases (Insert)" </br>
+
+<strong>Step 5</strong> </br>
+"Student can use class based components in react and it's features (.bind)" </br>
+"Student can create a RESTful API (params)" </br>
+
+
