@@ -14,7 +14,7 @@ export default function House(props) {
         <p>State: {state}</p>
         <p>Zip: {zip}</p>
       </div>
-      <img src={delete_button} alt='delete button' className='house_delete_button' onClick={_=> props.deleteHouse(id)} />
+      <img src={delete_button} alt='delete button' className='house_delete_button' onClick={_ => props.deleteHouse(id)} />
     </div>
   )
 }

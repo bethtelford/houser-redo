@@ -8,11 +8,13 @@
   display: flex;
   justify-content: space-between;
 }
+
 .wiz_heading {
   font-size: 30px;
   margin: 20px;
   font-weight: 700;
 }
+
 .wiz_subheader_button {
   margin: 20px;
   border: none;
@@ -22,28 +24,37 @@
   background-color: #FEC2C2;
 }
 
+.wiz_subheader_button:hover {
+  cursor: pointer;
+}
+
 .wiz_input_container {
   margin: 20px auto;
   width: 70%;
   /* border-top: solid 1px black; */
 }
+
 .wiz_input_box {
   margin: 10px;
   float: left;
   font-size: 18px;
   font-weight: 700;
 }
+
 .wiz_input_box > * {
   margin: 2px;
 }
+
 .wiz_input_box > p {
   margin-left: 12px;
 }
+
 .wiz_input_box > input {
   border: solid 1px #519872;
   border-radius: 2px;
   height: 25px;
 }
+
 .wiz_input_box > input:focus {
   outline: none;
 }
@@ -57,4 +68,8 @@
   position: absolute;
   bottom: 30px;
   right: 30px;
+}
+
+.wiz_button:hover {
+  cursor: pointer;
 }

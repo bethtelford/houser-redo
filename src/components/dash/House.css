@@ -14,11 +14,13 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 .house_delete_button {
   position: absolute;
   top: 5px;
   right: 5px;
 }
+
 .house_delete_button:hover {
   cursor: pointer;
 }

@@ -14,7 +14,6 @@ class Wiz extends Component {
       zip: 0
     }
     this.handleChange = this.handleChange.bind(this);
-    this.cancel = this.cancel.bind(this);
     this.complete = this.complete.bind(this);
   }
   handleChange(prop, value) {
@@ -23,27 +22,22 @@ class Wiz extends Component {
         if (value.length > 2) {
           return
         }
+        break;
       case 'zip':
         if (value.length > 5) {
           return
         }
+        break;
+      default:
+        break;
     }
     this.setState({ [prop]: value })
   }
-  cancel() {
-    this.setState({
-      name: '',
-      address: '',
-      city: '',
-      state: '',
-      zip: 0
-    })
-    this.props.history.push('/')
-  }
+
   complete() {
     axios.post('/api/house', this.state)
       .then(res => {
-        this.cancel();
+        this.props.history.push('/')
       })
   }
   render() {
@@ -51,7 +45,7 @@ class Wiz extends Component {
       <div className='Wiz'>
         <div className='wiz_subheader'>
           <h2 className='wiz_heading'>Add New Listing</h2>
-          <button className='wiz_subheader_button' onClick={this.cancel}>Cancel</button>
+          <button className='wiz_subheader_button' onClick={_ => this.props.history.push('/')}>Cancel</button>
         </div>
         <div className='wiz_input_container'>
           <div className='wiz_input_box'>
