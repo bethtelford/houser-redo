@@ -138,6 +138,7 @@ Next you will add the ability to add a new house.
 * Write a method in Wizard that sends an axios request to the endpoint you just wrote.
    * The axios request should take all the values from state and put them in the body of the request.
    * Once the request comes back, navigate the user to the Dashboard View.
+* Set up the 'Complete' button to fire the method.
    
 ## Step 5
 Then you will add the ability to delete a house.
