@@ -1,0 +1,24 @@
+.House {
+  width: 100%;
+  height: 150px;
+  background-color: #DEDEDE;
+  margin: 20px 0;
+  position: relative;
+}
+
+.house_detail_box {
+  height: 100%;
+  width: 90%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.house_delete_button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.house_delete_button:hover {
+  cursor: pointer;
+}

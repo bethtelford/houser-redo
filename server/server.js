@@ -22,7 +22,16 @@ massive({
         .then(houses => res.status(200).send(houses))
     })
 
+    app.post('/api/house', (req, res) => {
+      let { name, address, city, state, zip } = req.body;
+      db.create_house(name, address, city, state, zip)
+        .then(_ => res.status(200).send())
+    })
 
+    app.delete('/api/house/:id', (req, res) => {
+      db.delete_house(req.params.id)
+        .then(_ => res.status(200).send())
+    })
 
 
     app.listen(port, _ => console.log(`Housten we have lift off on port ${port}`))
