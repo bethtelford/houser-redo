@@ -85,6 +85,7 @@ Funcitonality of the Dashboard View:
 * A user should be able to see all the houses that have been added to the database.
 * Each house should display its name, address, city, state, and zipcode information.
 * A user should be able to click the 'Add New Property' button to be taken to the Wizard view.
+* A user should be able to delete any single house.
 
 ## Design
 PICTURE HERE
@@ -107,7 +108,7 @@ You are going to begin by setting up the routing.
 * Create the 'Cancel' button in the Wizard view. Set it up to navigate to the Dashboard when clicked. 
 
 ## Step 2
-Now that routing is setup, the first thing you will do is setup the form in the Wizard View.
+Now that routing is setup, the first thing you will do is set up the form in the Wizard View.
 
 * Set up initial state in Wizard for name, address, city, state, and zipcode.
 * Create a corresponding input box in the JSX for each property in state.
@@ -185,4 +186,181 @@ You just covered a lot of competencies! Here is the breakdown:
 "Student can use class based components in react and it's features (.bind)" </br>
 "Student can create a RESTful API (params)" </br>
 
+# Part 2
 
+<b>Live example [here](#)</b>
+
+In this part we will expand our Wizard to have three steps instead of just one.
+
+Functionality of the Wizard:
+* The Wizard should have three steps.
+* A user should be able to navigate between the steps.
+   * The inputs on each step should be remembered. If the user selects a previous step they should see the previously entered values.
+   * It is acceptable to lose the values on refresh.
+* In Step One:
+   * A user should be able to add a name, address, city, state, and zipcode for a house.
+   * A user should be able to click the 'Next Step' button to navigate to Step Two.
+* In Step Two:
+   * A user should be able to add an image URL.
+   * A user should be able to click the 'Next Step' button to navigate to Step Three.
+   * A user should be able to click the 'Previous Step' button to navigate to Step One.
+* In Step Three:
+   * A user should be able to add the monthly mortgage amount. 
+      * This should populate a 'Recommended Rent' field. This amount should be 1.25 times the monthly mortgage amount.
+   * A user should be able to add the desired monthly rent.
+   * A user should be able to click the 'Complete' button.
+      * This should add a new house with to the database.
+      * This should clear the inputs of the Wizard.
+      * This should redirect the user to the Dashboard.
+* A user should be able to click the 'Cancel' button on any step.
+    * This should NOT add a house to the database.
+    * This should clear the inputs of the Wizard.
+    * This should redirect the user to the Dashboard.
+
+Funcitonality of the Dashboard View:
+* A user should be able to see all the houses that have been added to the database.
+* Each house should display its image, name, address, city, state, zipcode, montly mortgage, and desired rent information.
+* A user should be able to click the 'Add New Property' button to be taken to the Wizard view.
+* A user should be able to delete any single house.
+
+## Design
+ IMAGE HERE
+ 
+## Step 1
+In this step you will prepare your application to work with Redux.
+
+* First, run `npm i --save redux react-redux`
+* Use SQLTabs to connect to your database. Alter the houses table, adding colums for the image, monthly mortgage amount, and desired rent (hint: save the SQL command for this to show your mentor).
+* Create a folder called ducks inside the src folder.
+* Inside ducks, create a file called store.js and a file called reducer.js
+* Now create three components, one for each step.
+* Your Wizard component has most of the functionality of Step One in it right now. Move state, the methods needed for the inputs to update state, and the input boxes from Wizard to Step One.
+* Leave the 'Cancel' button in Wizard.
+* Build the components for steps two and three to roughly match Step One. Just change the input boxes to be different for each view.
+* Move the method that saves a house to the database and the 'Complete' button from Wizard to Step Three.
+* Now Wizard should be mostly empty. We are going to use it to organize our new routes. 
+   * Bring in Route from `react-router-dom`, and the three step components you just made.
+   * Set up a route for each step. The path should look like '/wizard/step#' with the number matching each step. 
+   * By setting up the routes for the steps inside Wizard instead of inside routes.js we keep our routing tree organized. 
+* Now set up the navigation buttons in each step to flip through the steps. Also go to the 'Add New Property' button in Dashboard and change it to navigate to '/wizard/step1' instead of '/wizard'
+
+## Step 2
+
+Now you will get the Redux store set up and talking to a component.
+
+* Open reducer.js and create an object called initialState. This object should store all the values entered in the wizard.
+* Export a function named reducer. This function should take in two parameters: state (with the default value of initialState), and action.
+* Set up a switch statement inside the reducer based on the action type. For now just setup a default case that returns state.
+* Now open store.js and bring in createStore from `redux` and the reducer from reducer.js. 
+   * Create a store using the reducer you just brought in.
+   * Export that store.
+* Open src/index.js and bring in the Provider from `react-redux` and the store from store.js.
+   * Wrap HashRouter with the Provider.
+   * Pass the store to the Provider.
+* Go back to Step One and bring in connect from `react-redux`.
+   * Write the mapStateToProps function at the bottom of the file.
+   * Take the name, address, city, state, and zipcode off of the Redux state.
+   * Now invoke connect, passing in mapStateToProps. Immediately invoke it again passing in the name of the component.
+* Now if you console.log props inside your render method you should see the values coming from the Redux state. 
+
+## Step 3
+
+Then you will setup your Step One component to update Redux state.
+
+* In reducer.js write an action builder that takes in a parameter for each value entered in Step One. 
+* The function should return an action object with two properties: a type and a payload.
+   * The type should be a string that describes what this action is supposed to do. These action type strings are usually stored in a constant outside the function.
+   * The payload should be an object with a property for every parameter that was passed into the function.
+   * The function should be exported.
+* In your reducer function, add a case to the switch statement. The case should make the action type you just wrote.
+   * This case should return an object that includes all the values stored on state. The values for img, monthly mortgage, and desired rent should remain what they were, and the values for name, address, city, state, and zipcode should be updated based on the values of the action payload.
+* Bring the action builder you just wrote into Step One.
+* Add an object to the connect method at the bottom of the component. Add the action builder you just brought into Step One as a value to this object. 
+* Now setup the 'Next Step' button to fire this action.
+   * The button should still navigate to the next step.
+
+## Step 4
+
+Now that you have Step One connected to Redux, you will replicate the process for steps two and three.
+
+For both components:
+* Bring in connect from `react-redux`.
+* Write the mapStateToProps function at the bottom of the file.
+   * In Step Two, take the image off of the Redux state.
+   * In Step Three, take all the properties off of the Redux state (we'll need these to make our axios request).
+* Invoke connect, passing in mapStateToProps. Immediately invoke it again passing in the name of the component.
+
+## Step 5 
+
+Then replicate the process of saving the values to Redux state for steps two and three.
+
+* In reducer.js write an action builder each for both components.
+   * The function should take in parameters for each value entered in the corresponding step. 
+   * The function should return an action object with two properties: a type and a payload.
+   * The type should be a string that describes what this action is supposed to do.
+   * The payload should be an object with a property for every parameter that was passed into the function.
+   * The function should be exported.
+* In your reducer function, add a case each for both action builders to the switch statement. 
+   * The cases should match the action types you just wrote.
+   * The cases should return an object that includes all the values stored on state. The values added in other steps should remain what they were, and the values for the current step should be updated based on the values of the action payload.
+* Bring the corresponding action builder into the components.
+* Add an object to the connect method at the bottom of the components. Add the action builders you just brought in as a value to this object.  
+* Set up the action builders to fire when the navigation buttons are clicked.
+   * The action builder that saves the image URL should fire when the 'Previous Step' or the 'Next Step' buttons are clicked in Step Two.
+   * The action builder that saves the monthly mortgage amount and the desired rent should fire when the 'Previous Step' button is click in Step Three.
+   
+## Step 6
+
+Next you'll make sure the saved values show up in each step if the user navigates between steps.
+
+* In each step, use a component lifecycle method to update state as soon as the component loads. 
+   * Every step has been hooked up to Redux state, so take the the values stored in Redux and set them on state.
+   * This should make the input boxes display the values previously entered. 
+ 
+## Step 7
+
+Now you will set up you cancel button to forget all values from the Wizard.
+
+* In reducer.js write an action builder
+   * The function should return an action object with two properties: a type and a payload.
+   * The type should be a string that describes what this action is supposed to do.
+   * The payload should be equal to intialState.
+   * The function should be exported.
+* In your reducer function, add a case for the action builder to the switch statement. 
+   * The case should match the action type you just wrote.
+   * The case should return the payload. In this case we DO want to forget all the values that were stored in state.
+* In Wizard, bring in connect from `react-redux` and the action builder you just wrote.
+   * Invoke connect, passing in null for the first argument. This is because you don't need to map any Redux state to your props in this component.
+   * Pass in an object for the second argument. This object should contain the action builder you brought in.
+   * Immediately invoke connect again passing in the name of the component.
+* Set up the 'Cancel' button to fire the action builder.
+   * The button should still navigate to the Dashboard view.
+   
+## Step 8
+
+Finally you will update the ability to add a new house to use all these new values
+
+* Change the sql file you wrote for your POST endpoint to accept additional parameters and insert them into the new columns you added.
+* Update the POST endpoint to pull the additional values off of the body and pass them into the massive function.
+* Open Step Three and update the method that saves a new house to the database.
+   * The axios request should send all the values from all three steps on the body.
+   * name, address, city, state, zipcode, and the image URL should be pulled from Redux, but the monthly mortgage amount and the desired rent should be pulled from local state.
+   * This is because Redux is only updated when the navigation buttons are clicked, so on the final step the values stored in Redux may be out of date.
+   * The method should invoke the action builder that clears the Redux state once the house has been added. Remember to bring the action builder in at the top of the file and add it to your connect function at the bottom.
+   * The method should still navigate to the Dashboard once the house has been added.
+* Lastly update the House component to display the additional values for each House.
+
+## Final Step
+Once you have completed all the functionality of your application you are ready to set up your server to server the front end files
+* Run `npm run build`
+* Use express.static to serve the build from your server.
+
+## Competencies
+You added four HUGE competencies! 
+
+"Student can utilize Redux in their code to manage state (store, reducer)" </br>
+"Student can utilize Redux in their code to manage state (connect, mapStateToProps, share state)" </br>
+"Student can utilize Redux in their code to manage state (actions, action builders, mapDispatchToProps object)" </br>
+"Student can create Node servers using the Express package (Serving static files)" </br>
+
+<b>Congratulations! You've completed 31 competencies and built your second full-stack application!</b>
