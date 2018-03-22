@@ -1,2 +1,2 @@
-select * from pt1_houses
+select name from pt2_houses
 order by id;

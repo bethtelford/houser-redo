@@ -7,12 +7,15 @@
 }
 
 .house_detail_box {
+  float: left;
   height: 100%;
-  width: 90%;
+  width: 30%;
   padding: 10px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+.house_detail_box > * {
+  margin: 0 0 10px 0;
 }
 
 .house_delete_button {

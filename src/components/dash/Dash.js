@@ -19,10 +19,10 @@ class Dash extends Component {
   }
   getHouses() {
     axios.get('/api/houses')
-      .then(resp => {
-        console.log('GET axios resp', resp.data);
+      .then(res => {
+        console.log('GET axios res', res.data);
         this.setState({
-          houses: resp.data
+          houses: res.data
         })
       })
   }
@@ -35,7 +35,7 @@ class Dash extends Component {
       <div className='Dash'>
         <div className='dash_subheader'>
           <h2 className='dash_heading'>Dashboard</h2>
-          <button className='dash_subheader_button' onClick={_ => this.props.history.push('/wizard')}>Add New Property</button>
+          <button className='dash_subheader_button' onClick={_ => this.props.history.push('/wizard/step1')}>Add New Property</button>
         </div>
         <div className='dash_prop_container'>
           <h3 className='dash_prop_heading'>Home Listings</h3>

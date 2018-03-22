@@ -1,5 +1,6 @@
 .Wiz {
   width: 50vw;
+  /* height: 100%; */
   background-color: #E5F4EC;
   position: relative;
 }
@@ -31,7 +32,6 @@
 .wiz_input_container {
   margin: 20px auto;
   width: 70%;
-  /* border-top: solid 1px black; */
 }
 
 .wiz_input_box {
@@ -61,15 +61,34 @@
 
 .wiz_button {
   margin: 20px;
-  background-color: #8AEA92;
   border: none;
   padding: 10px;
   font-size: 20px;
+}
+
+.wiz_button:hover {
+  cursor: pointer;
+}
+
+.wiz_step_button {
+  background-color: #3B5249;
+  color: white;
   position: absolute;
   bottom: 30px;
   right: 30px;
 }
 
-.wiz_button:hover {
-  cursor: pointer;
+.wiz_prev_button {
+  background-color: #3B5249;
+  color: white;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+
+.wiz_complete_button {
+  background-color: #8AEA92;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
 }

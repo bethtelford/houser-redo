@@ -1,2 +1,2 @@
-delete from pt1_houses
+delete from pt2_houses
 where id = $1;
