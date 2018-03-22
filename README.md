@@ -88,7 +88,10 @@ Funcitonality of the Dashboard View:
 * A user should be able to delete any single house.
 
 ## Design
-PICTURE HERE
+Dashboard
+<img src="https://github.com/bethtelford/houser-redo/blob/master/assets/pt1_dashboard.png" />
+Wizard
+<img src="https://github.com/bethtelford/houser-redo/blob/master/assets/pt1_wizard.png" />
 
 ## Step 1
 You are going to begin by setting up the routing.
@@ -224,7 +227,14 @@ Funcitonality of the Dashboard View:
 * A user should be able to delete any single house.
 
 ## Design
- IMAGE HERE
+Dashboard
+<img src="https://github.com/bethtelford/houser-redo/blob/master/assets/pt2_dashboard.png" />
+Wizard - Step One
+<img src="https://github.com/bethtelford/houser-redo/blob/master/assets/pt2_step1.png" />
+Wizard - Step Two
+<img src="https://github.com/bethtelford/houser-redo/blob/master/assets/pt2_step2.png" />
+Wizard - Step Three
+<img src="https://github.com/bethtelford/houser-redo/blob/master/assets/pt2_step3.png" />
  
 ## Step 1
 In this step you will prepare your application to work with Redux.
