@@ -68,7 +68,7 @@ Congratulations! If you finished all the setup, you've already completed some de
 
 # Part 1
 
-<b>Live example [here](#). Filled out planning sheet [here](https://github.com/bethtelford/houser-redo/blob/master/PLANNING_SHEET.md)</b>
+<b>Live example [here](https://cl.ly/3p0v0k2L2m43). Filled out planning sheet [here](https://github.com/bethtelford/houser-redo/blob/master/PLANNING_SHEET.md)</b>
 
 In the first part you will set up routing, the abiltiy to view the houses, add a new house, and delete a house from the list. 
 
@@ -191,7 +191,7 @@ You just covered a lot of competencies! Here is the breakdown:
 
 # Part 2
 
-<b>Live example [here](#)</b>
+<b>Live example [here](https://cl.ly/3F0S2m1c261U)</b>
 
 In this part we will expand our Wizard to have three steps instead of just one.
 
