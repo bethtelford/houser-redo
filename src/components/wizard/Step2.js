@@ -28,7 +28,7 @@ class Step2 extends Component {
         <div className='wiz_input_container'>
           <div className='wiz_input_box'>
             <p>Image URL</p>
-            <input value={this.state.img} onChange={e => this.handleChange(e.target.value)} />
+            <input style={{ width: "35vw" }} value={this.state.img} onChange={e => this.handleChange(e.target.value)} />
           </div>
         </div>
         <button className='wiz_button wiz_prev_button' onClick={_ => {
