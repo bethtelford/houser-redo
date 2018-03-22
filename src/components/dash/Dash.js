@@ -20,7 +20,6 @@ class Dash extends Component {
   getHouses() {
     axios.get('/api/houses')
       .then(res => {
-        console.log('GET axios res', res.data);
         this.setState({
           houses: res.data
         })

@@ -11,7 +11,7 @@ class Step3 extends Component {
     this.state = {
       mortgage: 0,
       recommended: 0,
-      desired: 0
+      rent: 0
     }
     this.handleChange = this.handleChange.bind(this);
     this.complete = this.complete.bind(this);
@@ -25,14 +25,13 @@ class Step3 extends Component {
   handleChange(prop, value) {
     switch (prop) {
       case 'mortgage':
-        console.log(value)
         this.setState({
           mortgage: value, recommended: value * 1.25
         })
         break;
-      case 'desired':
+      case 'rent':
         this.setState({
-          desired: value
+          rent: value
         })
         break;
       default:
@@ -45,7 +44,6 @@ class Step3 extends Component {
     let house = {
       name, address, city, state, zip, img, ...this.state
     }
-    console.log(house);
     axios.post('/api/house', house)
       .then(res => {
         this.props.clear();
@@ -56,14 +54,14 @@ class Step3 extends Component {
     return (
       <div>
         <div className='wiz_input_container'>
-          <div style={{ textAlign: 'center', fontWeight: '700', margin: '20px' }}>Recommened Rent: ${this.state.recommended}</div>
+          <div style={{ textAlign: 'center', fontWeight: '700', margin: '20px' }}>Recommended Rent: ${this.state.recommended}</div>
           <div className='wiz_input_box'>
             <p>Monthly Mortgage Amount</p>
             <input type='number' style={{ width: "35vw" }} value={this.state.mortgage} onChange={e => this.handleChange('mortgage', e.target.value)} />
           </div>
           <div className='wiz_input_box'>
             <p>Desired Monthly Rent</p>
-            <input type='number' style={{ width: "35vw" }} value={this.state.desired} onChange={e => this.handleChange('desired', e.target.value)} />
+            <input type='number' style={{ width: "35vw" }} value={this.state.rent} onChange={e => this.handleChange('rent', e.target.value)} />
           </div>
         </div>
         <button className='wiz_button wiz_prev_button' onClick={_ => {

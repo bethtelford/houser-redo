@@ -14,7 +14,6 @@ class Step2 extends Component {
   }
 
   componentDidMount() {
-    console.log('step 2 mounting', this.props.img)
     this.setState({ img: this.props.img })
   }
 

@@ -6,8 +6,7 @@ const initialState = {
   zip: 0,
   img: '',
   mortgage: 0,
-  suggested: 0,
-  desired: 0
+  rent: 0
 }
 
 const LOCATION_INFO = 'LOCATION_INFO';
@@ -16,7 +15,6 @@ const MONEY_INFO = 'MONEY_INFO';
 const CLEAR_INFO = 'CLEAR_INFO'
 
 export default function reducer(state = initialState, action) {
-  console.log('reducer', action)
   let { type, payload } = action;
   switch (type) {
     case LOCATION_INFO:
