@@ -23,8 +23,8 @@ massive({
     })
 
     app.post('/api/house', (req, res) => {
-      let { name, address, city, state, zip } = req.body;
-      db.create_house(name, address, city, state, zip)
+      let { name, address, city, state, zip, img, mortgage, rent } = req.body;
+      db.create_house(name, address, city, state, zip, img, mortgage, rent)
         .then(_ => res.status(200).send())
     })
 

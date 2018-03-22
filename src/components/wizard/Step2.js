@@ -14,6 +14,7 @@ class Step2 extends Component {
   }
 
   componentDidMount() {
+    console.log('step 2 mounting', this.props.img)
     this.setState({ img: this.props.img })
   }
 
@@ -22,12 +23,13 @@ class Step2 extends Component {
   }
 
   render() {
+
     return (
       <div>
         <div className='wiz_input_container'>
           <div className='wiz_input_box'>
             <p>Image URL</p>
-            <input value={this.state.name} onChange={e => this.handleChange(e.target.value)} />
+            <input value={this.state.img} onChange={e => this.handleChange(e.target.value)} />
           </div>
         </div>
         <button className='wiz_button wiz_prev_button' onClick={_ => {

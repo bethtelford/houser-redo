@@ -8,7 +8,7 @@ export default function House(props) {
   return (
     <div className='House'>
       <div className='house_detail_box'>
-        <img src={img} alt='house image' />
+        <div className='house_img' style={{ backgroundImage: `url('${img}')` }}></div>
       </div>
       <div className='house_detail_box'>
         <p>Property Name: {name}</p>

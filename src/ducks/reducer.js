@@ -16,6 +16,7 @@ const MONEY_INFO = 'MONEY_INFO';
 const CLEAR_INFO = 'CLEAR_INFO'
 
 export default function reducer(state = initialState, action) {
+  console.log('reducer', action)
   let { type, payload } = action;
   switch (type) {
     case LOCATION_INFO:
@@ -40,14 +41,14 @@ export function updateLocation(locationObj) {
 
 export function updateImg(imgUrl) {
   return {
-    type: LOCATION_INFO,
+    type: IMG_INFO,
     payload: imgUrl
   }
 }
 
 export function updateMoney(moneyObj) {
   return {
-    type: LOCATION_INFO,
+    type: MONEY_INFO,
     payload: moneyObj
   }
 }

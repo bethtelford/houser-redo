@@ -16,10 +16,16 @@ class Step3 extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.complete = this.complete.bind(this);
   }
+
+  componentDidMount() {
+    let { mortgage, rent } = this.props
+    this.setState({ mortgage, rent })
+  }
+
   handleChange(prop, value) {
     switch (prop) {
       case 'mortgage':
-      console.log(value)
+        console.log(value)
         this.setState({
           mortgage: value, recommended: value * 1.25
         })
@@ -39,6 +45,7 @@ class Step3 extends Component {
     let house = {
       name, address, city, state, zip, img, ...this.state
     }
+    console.log(house);
     axios.post('/api/house', house)
       .then(res => {
         this.props.clear();
