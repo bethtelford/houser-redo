@@ -1,2 +1,2 @@
-select * from pt1_houses
+select * from sim2_pt1_houses
 order by id;

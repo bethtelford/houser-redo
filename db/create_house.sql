@@ -1,2 +1,2 @@
-insert into pt1_houses (name, address, city, state, zip)
+insert into sim2_pt1_houses (name, address, city, state, zip)
 values ($1, $2, $3, $4, $5);
