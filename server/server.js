@@ -7,14 +7,7 @@ port = 4000;
 const app = express();
 app.use(bodyParser.json());
 
-massive({
-  host: process.env.M_HOST,
-  port: process.env.M_PORT,
-  database: process.env.M_DATABASE,
-  user: process.env.M_USER,
-  password: process.env.M_PASSWORD,
-  ssl: true
-})
+massive(process.env.CONNECTION_STRING)
   .then(db => {
 
     app.get('/api/houses', (req, res) => {
