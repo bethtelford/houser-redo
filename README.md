@@ -26,7 +26,7 @@ This section will help you create the files you need and install the packages yo
 4) Inside your component folder create a folder for each component you will be using (Dashboard, House, Wizard, and Header)
 5) Inside each of these folders create a Javascript file named the same thing. Make sure to capitalize the first letter!
 6) Create a simple class component in the Dashboard and Wizard files. For now just return a div containing the component's name from the render method.
-7) Create a functional component (created with the function keyword) in the Header and Product files. For now just return a div containing the component's name.
+7) Create a functional component (created with the function keyword) in the Header and House files. For now just return a div containing the component's name.
 8) Now render the Dashboard, Wizard, and Header components in App.
 9) Render the House component inside Dashboard.
 10) Create a route.js file inside the src folder. We will use this for our routing later.
@@ -48,12 +48,12 @@ This section will help you create the files you need and install the packages yo
 2) Create an .env file at the root of the project.
 3) Open your .gitignore and add the .env file to it.
 4) Open server/index.js and require masssive and dotenv (make sure to invoke config on dotenv).
-5) Go to [Heroku](https://heroku.com) and create a database (you can also use a database you already have created, but just be careful not to name your table for Shelfie the same thing as any of the tables that already exist in your database)
+5) Go to [Heroku](https://heroku.com) and create a database (you can also use a database you already have created, but just be careful not to name your table for Houser the same thing as any of the tables that already exist in your database)
 6) Copy the connection URI for your new or existing database and save it in your .env file (make sure you put `?ssl=true` on the end of the string).
 7) Create a folder called db at the root of the project.
 8) Set up massive in your server using the connection string you saved in your .env file.
 9) Make sure to run `nodemon` again and make sure your database is connecting.
-10) Copy the connection string from your .env file into SQLTabs and create the products table.
+10) Copy the connection string from your .env file into SQLTabs and create the houses table.
 11) It's helpful to insert some dummy data into your database at this point to help you test as you go along. 
 
 ## Competencies
@@ -148,14 +148,14 @@ Next you will add the ability to add a new house.
 Then you will add the ability to delete a house.
 
 * Write DELETE endpoint in your server.
-   * The endpoint should should use a parameter to determine which product to remove from the database. 
+   * The endpoint should should use a parameter to determine which house to remove from the database. 
    * The endpoint should respond with the 'all good' status code once it has removed the house to the database.
 * Write a method in Dashboard that sends an axios request to the endpoint you just wrote.
-    * The method should accept a parameter to determine which product to remove from the database.
+    * The method should accept a parameter to determine which house to remove from the database.
     * Once the response comes back from the server, invoke the method you wrote to get all the houses from the database.
 * Pass the method from Dashboard to each House component through props. 
     * The method should fire when a user clicks any of the 'Delete' buttons.
-    * Remember to pass an argument into the method to identify which product should be deleted.
+    * Remember to pass an argument into the method to identify which house should be deleted.
    
 ## Competencies
 You just covered a lot of competencies! Here is the breakdown:
@@ -220,7 +220,7 @@ Functionality of the Wizard:
     * This should clear the inputs of the Wizard.
     * This should redirect the user to the Dashboard.
 
-Funcitonality of the Dashboard View:
+Functionality of the Dashboard View:
 * A user should be able to see all the houses that have been added to the database.
 * Each house should display its image, name, address, city, state, zipcode, montly mortgage, and desired rent information.
 * A user should be able to click the 'Add New Property' button to be taken to the Wizard view.
