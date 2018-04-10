@@ -35,7 +35,7 @@ class Wiz extends Component {
   }
 
   complete() {
-    axios.post('/api/house', this.state)
+    axios.post('/api/pt1/house', this.state)
       .then(res => {
         this.props.history.push('/')
       })

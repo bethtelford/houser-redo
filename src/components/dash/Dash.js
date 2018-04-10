@@ -18,7 +18,7 @@ class Dash extends Component {
     this.getHouses();
   }
   getHouses() {
-    axios.get('/api/houses')
+    axios.get('/api/pt1/houses')
       .then(resp => {
         console.log('GET axios resp', resp.data);
         this.setState({
@@ -27,7 +27,7 @@ class Dash extends Component {
       })
   }
   deleteHouse(id) {
-    axios.delete(`/api/house/${id}`)
+    axios.delete(`/api/pt1/house/${id}`)
       .then(res => this.getHouses());
   }
   render() {
