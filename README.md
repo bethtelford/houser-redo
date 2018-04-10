@@ -53,6 +53,7 @@ Competencies covered by this project
 ["Student can utilize Redux in their code to manage state (connect, mapStateToProps, share state)"](https://github.com/bethtelford/houser-redo#step-2-1) </br>
 <strong>Step 3</strong> </br>
 ["Student can utilize Redux in their code to manage state (actions, action builders, mapDispatchToProps object)"](https://github.com/bethtelford/houser-redo#step-3-1) </br>
+<strong>Final Step</strong> </br>
 ["Student can create Node servers using the Express package (Serving static files)"](https://github.com/bethtelford/houser-redo#final-step) </br>
 
 Don't worry too much about the competencies; they will be covered as you build this project. Good luck and work hard!
