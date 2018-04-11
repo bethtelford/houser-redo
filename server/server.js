@@ -7,7 +7,7 @@ const express = require('express'),
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../parts`));
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {

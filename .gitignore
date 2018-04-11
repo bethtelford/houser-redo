@@ -7,6 +7,7 @@
 /coverage
 
 # production
+/parts
 /build
 /build-pt1
 /build-pt2
