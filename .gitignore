@@ -8,8 +8,8 @@
 
 # production
 /build
-/build-pt1
-/build-pt2
+# /build-pt1
+# /build-pt2
 
 # misc
 .DS_Store
