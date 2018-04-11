@@ -3,9 +3,13 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       massive = require('massive'),
       ctrl = require('./controller'),
-      port = 4000;
+      port = process.env.PORT || 4000
+      path = require('path');
 
 const app = express();
+
+app.use((req, res, next)=>{console.log(req.url);next()});
+
 app.use(bodyParser.json());
 app.use(express.static(`${__dirname}/../parts`));
 
@@ -27,7 +31,12 @@ massive(process.env.CONNECTION_STRING)
     app.post('/part2/api/pt2/house', ctrl.pt2_create)
 
     app.delete('/part2/api/pt2/house/:id', ctrl.pt2_remove)
-  })
 
+    app.get('*', (req, res)=>{
+      if (req.url.includes('part1/'))
+      return res.sendFile(path.join(__dirname, '../parts/part1/index.html'));
+      return res.sendFile(path.join(__dirname, '../parts/part2/index.html'));
+    })
+  }).catch(err=>console.error(err));
 
 
