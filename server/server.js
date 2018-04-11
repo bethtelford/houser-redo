@@ -7,7 +7,7 @@ const express = require('express'),
 
 const app = express();
 app.use(bodyParser.json());
-app.use(express.static(`${__dirname}/../build-pt2`));
+app.use(express.static(`${__dirname}/../build`));
 
 massive(process.env.CONNECTION_STRING)
   .then(db => {
@@ -15,18 +15,18 @@ massive(process.env.CONNECTION_STRING)
     app.listen(port, _ => console.log(`Housten we have lift off on port ${port}`))
 
     // Part 1
-    app.get('/api/pt1/houses', ctrl.pt1_read)
+    app.get('/part1/api/pt1/houses', ctrl.pt1_read)
 
-    app.post('/api/pt1/house', ctrl.pt1_create)
+    app.post('/part1/api/pt1/house', ctrl.pt1_create)
 
-    app.delete('/api/pt1/house/:id', ctrl.pt1_remove)
+    app.delete('/part1/api/pt1/house/:id', ctrl.pt1_remove)
 
     // Part 2
-    app.get('/api/pt2/houses', ctrl.pt2_read)
+    app.get('/part2/api/pt2/houses', ctrl.pt2_read)
 
-    app.post('/api/pt2/house', ctrl.pt2_create)
+    app.post('/part2/api/pt2/house', ctrl.pt2_create)
 
-    app.delete('/api/pt2/house/:id', ctrl.pt2_remove)
+    app.delete('/part2/api/pt2/house/:id', ctrl.pt2_remove)
   })
 
 
